@@ -19,13 +19,16 @@ import java.util.Objects
 fun BottomDetectingLazyColumn(
     items: Int,
     onBottom: ((Void?) -> Unit)? = null,
-    composable: @Composable ((Int) -> Unit)
+    composable: @Composable ((Int) -> Unit),
+    userScrollEnabled: Boolean = true,
+    modifier: Modifier = Modifier
 ) {
     val scrollState = rememberLazyListState()
 
     LazyColumn(
         state = scrollState,
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier,
+        userScrollEnabled = userScrollEnabled
     ) {
         items(items) { item ->
             // 아이템을 표시하는 코드
