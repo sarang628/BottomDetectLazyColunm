@@ -57,8 +57,7 @@ fun MyScreen() {
 
     BottomDetectingLazyColumn(
         items = items.size,
-        onBottom = {
-        }
+        onBottom = {},
     ) { index ->
         Text(text = items[index])
     }
