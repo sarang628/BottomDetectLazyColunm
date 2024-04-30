@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BottomDetectingLazyColumn(
     modifier: Modifier = Modifier,
-    scrollState: LazyListState = rememberLazyListState(),
+    listState: LazyListState = rememberLazyListState(),
     items: Int,
     onBottom: ((Void?) -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(0.dp),
@@ -34,7 +34,7 @@ fun BottomDetectingLazyColumn(
     composable: @Composable ((Int) -> Unit),
 ) {
     LazyColumn(
-        state = scrollState,
+        state = listState,
         modifier = modifier,
         userScrollEnabled = userScrollEnabled,
         contentPadding = contentPadding,
