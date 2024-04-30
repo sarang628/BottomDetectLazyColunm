@@ -1,5 +1,6 @@
 package com.sryang.library
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.ScrollableDefaults
@@ -25,8 +26,8 @@ import java.util.Objects
 @Composable
 fun BottomDetectingLazyColumn(
     modifier: Modifier = Modifier,
+    scrollState: LazyListState = rememberLazyListState(),
     items: Int,
-    position: Int? = null,
     onBottom: ((Void?) -> Unit)? = null,
     contentPadding: PaddingValues = PaddingValues(0.dp),
     reverseLayout: Boolean = false,
@@ -37,14 +38,6 @@ fun BottomDetectingLazyColumn(
     userScrollEnabled: Boolean = true,
     composable: @Composable ((Int) -> Unit),
 ) {
-    val scrollState = rememberLazyListState()
-
-    LaunchedEffect(key1 = position) {
-        position?.let {
-            scrollState.scrollToItem(position)
-        }
-    }
-
     LazyColumn(
         state = scrollState,
         modifier = modifier,

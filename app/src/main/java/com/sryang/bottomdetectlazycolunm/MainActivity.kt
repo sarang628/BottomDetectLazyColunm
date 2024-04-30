@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var position by remember { mutableStateOf(0) }
             BottomDetectLazyColunmTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -36,27 +35,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Box(Modifier.fillMaxSize()) {
-
-                        val items = (1..100).map { "Item $it" }
-
-                        BottomDetectingLazyColumn(
-                            items = items.size,
-                            onBottom = {},
-                            position = position
-                        ) { index ->
-                            Text(text = items[index])
-                        }
-
-                        OutlinedTextField(
-                            modifier = Modifier.align(Alignment.BottomCenter),
-                            value = position.toString(),
-                            onValueChange = {
-                                try {
-                                    position = Integer.parseInt(it)
-                                } catch (e: Exception) {
-
-                                }
-                            })
                     }
                 }
             }
