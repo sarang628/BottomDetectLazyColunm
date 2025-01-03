@@ -1,23 +1,23 @@
-package com.sryang.library
+# Jetpack Compose 안드로이드 하단 감지 Lazy Colunm
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.gestures.ScrollableDefaults
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+```
+dependencies {
+	        implementation 'com.github.sarang628:BottomDetectingLazyColumn:69c748757d'
+	}
+```
 
+# How to make
+
+GPT의 도움을 받음.
+
+리스트 상단 하단 2개를 만든다.
+
+상단 리스트는 실제 항목을 표시할 리스트
+하단 리스트는 항목이 1개로 이 항목의 표시를 감지하여 하단에 도달했다고 판단.
+
+구현코드
+
+```
 /**
  * @param modifier Modifier
  * @param listState LazyList 상태
@@ -72,3 +72,23 @@ fun BottomDetectingLazyColumn(
         }
     }
 }
+```
+
+예제코드
+
+```
+@Preview
+@Composable
+fun MyScreen() {
+    val items = (1..100).map { "Item $it" }
+
+    BottomDetectingLazyColumn(
+        items = items.size,
+        onBottom = {
+            //TODO::
+        }
+    ) { index ->
+        Text(text = items[index])
+    }
+}
+```
