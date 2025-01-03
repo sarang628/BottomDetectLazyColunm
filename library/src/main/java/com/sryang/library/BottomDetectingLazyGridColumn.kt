@@ -24,7 +24,8 @@ import androidx.compose.ui.unit.dp
  * @param items 항목 개수
  * @param onBottom 하단 도달
  * @param contentPadding 내용에 적용할 패딩 값
- * @param verticalArrangement 새로 정렬 값
+ * @param verticalArrangement 새로 마진 값
+ * @param horizontalArrangement 가로 마진 값
  * @param flingBehavior 플링 상태
  * @param userScrollEnabled 사용자 스크롤 가능 여부
  * @param columns 그리드 설정
@@ -40,6 +41,7 @@ fun BottomDetectingGridLazyColumn(
     reverseLayout: Boolean = false,
     verticalArrangement: Arrangement.Vertical =
         if (!reverseLayout) Arrangement.Top else Arrangement.Bottom,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
     userScrollEnabled: Boolean = true,
     columns: GridCells,
@@ -51,6 +53,7 @@ fun BottomDetectingGridLazyColumn(
         userScrollEnabled = userScrollEnabled,
         contentPadding = contentPadding,
         verticalArrangement = verticalArrangement,
+        horizontalArrangement = horizontalArrangement,
         flingBehavior = flingBehavior,
         columns = columns
     ) {
