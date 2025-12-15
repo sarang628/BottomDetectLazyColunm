@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -84,6 +85,11 @@ fun BottomDetectingLazyColumnPreview() {
             listState = listState,
             items = items.size,
             onBottom = { count++ },
+            listContent = {
+                items(1) {
+                    CircularProgressIndicator()
+                }
+            }
         ) { index ->
             Text(
                 modifier = Modifier
