@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 fun BottomDetectingLazyColumn(
     modifier            : Modifier                      = Modifier,
     listState           : LazyListState                 = rememberLazyListState(),
-    items               : Int                           = 0,
     onBottom            : () -> Unit                    = { },
     contentPadding      : PaddingValues                 = PaddingValues(0.dp),
     reverseLayout       : Boolean                       = false,
@@ -34,8 +33,7 @@ fun BottomDetectingLazyColumn(
     horizontalAlignment : Alignment.Horizontal          = Alignment.Start,
     flingBehavior       : FlingBehavior                 = ScrollableDefaults.flingBehavior(),
     userScrollEnabled   : Boolean                       = true,
-    listContent         : LazyListScope.() -> Unit = {},
-    contents            : @Composable ((Int) -> Unit)       = {},
+    listContent         : LazyListScope.() -> Unit      = { },
 ) {
     LazyColumn(
         state               = listState,
@@ -46,11 +44,6 @@ fun BottomDetectingLazyColumn(
         horizontalAlignment = horizontalAlignment,
         flingBehavior       = flingBehavior,
     ) {
-        items(items) { item ->
-            // 아이템을 표시하는 코드
-            contents.invoke(item)
-        }
-
         listContent()
 
         // 하단 감지를 위한 공간 생성
